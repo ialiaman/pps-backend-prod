@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home3/sinesste/public_html/jataq/john/admin/
+    - /bin/cp -a * $DEPLOYPATH
