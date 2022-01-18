@@ -9,8 +9,20 @@ header('Access-Control-Max-Age: 1000');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
 
 $data = json_decode(file_get_contents("php://input"), true);
-$ip = $_POST['ip'];
-echo json_encode($ip);
+$type = @$_POST['type'];
+if ($type == 1)
+{
+    global $con;
+    $ip = $_POST['ip'];
+    $page= $_POST['page'];
+    if ($ip != null)
+    {
+        $getCurrentCount = $con -> query("SELECT count FROM visit_count WHERE page_name = '$page' ");
+        echo json_encode($page);
+
+    }
+    
+}
 
 ?>
 
