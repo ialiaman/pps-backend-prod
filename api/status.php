@@ -10,42 +10,45 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Autho
 
 $data = json_decode(file_get_contents("php://input"), true);
 $type = @$_POST['type'];
-if ($type == 1)
-{
-    global $con;
-    $ip = $_POST['ip'];
-    $page= $_POST['page'];
-    if ($ip != null)
-    {
-        $getCurrentCount = $con -> query("SELECT count FROM visit_count WHERE page_name = '$page' ");
 
-        $count = mysqli_fetch_assoc($getCurrentCount);
-        $newcount = intVal($count['count'])+1;
+echo json_encode($type);
 
-        $querycount = "UPDATE visit_count set count = '$newcount' WHERE page_name = '$page'";
-        $querycount_run = mysqli_query($con,$querycount);
-        if($querycount_run)
-        {
-            $data = array("response" => 1);
-            echo json_encode($data);
-        }
-        else
-        {
-            $data = array("response" => 0);
-            echo json_encode($data);
-        }
-    }
-    else
-    {
-        $data = array("No IP Address Recieved");
-        echo json_encode($data);
-    } 
-}
-else
-{
-    $data = array("Type not Same");
-    echo json_encode($data);
-}
+// if ($type == 1)
+// {
+//     global $con;
+//     $ip = $_POST['ip'];
+//     $page= $_POST['page'];
+//     if ($ip != null)
+//     {
+//         $getCurrentCount = $con -> query("SELECT count FROM visit_count WHERE page_name = '$page' ");
+
+//         $count = mysqli_fetch_assoc($getCurrentCount);
+//         $newcount = intVal($count['count'])+1;
+
+//         $querycount = "UPDATE visit_count set count = '$newcount' WHERE page_name = '$page'";
+//         $querycount_run = mysqli_query($con,$querycount);
+//         if($querycount_run)
+//         {
+//             $data = array("response" => 1);
+//             echo json_encode($data);
+//         }
+//         else
+//         {
+//             $data = array("response" => 0);
+//             echo json_encode($data);
+//         }
+//     }
+//     else
+//     {
+//         $data = array("No IP Address Recieved");
+//         echo json_encode($data);
+//     } 
+// }
+// else
+// {
+//     $data = array("Type not Same");
+//     echo json_encode($data);
+// }
 
 // if ($type == 2)
 // {
