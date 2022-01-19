@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2022 at 05:03 PM
+-- Generation Time: Jan 19, 2022 at 03:17 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.3.11
 
@@ -166,16 +166,17 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `cpas
 
 CREATE TABLE `visit_count` (
   `id` int(255) NOT NULL,
-  `count` varchar(255) NOT NULL,
-  `date` varchar(255) NOT NULL
+  `page_name` varchar(255) NOT NULL,
+  `count` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `visit_count`
 --
 
-INSERT INTO `visit_count` (`id`, `count`, `date`) VALUES
-(1, '30', '01/13/2022');
+INSERT INTO `visit_count` (`id`, `page_name`, `count`) VALUES
+(1, 'Home Page', 30),
+(2, 'Contact Us', 14);
 
 --
 -- Indexes for dumped tables
@@ -243,7 +244,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `visit_count`
 --
 ALTER TABLE `visit_count`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
