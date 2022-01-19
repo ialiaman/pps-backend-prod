@@ -9,7 +9,7 @@ include('config.php');
 
 
 $data = json_decode(file_get_contents("php://input"), true);
-$type = @$_POST['type'];
+$type = @$data['type'];
 
 echo json_encode($type);
 
