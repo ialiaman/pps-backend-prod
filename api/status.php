@@ -9,7 +9,7 @@ header('Access-Control-Max-Age: 1000');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
 
 $data = json_decode(file_get_contents("php://input"), true);
-$type = @$_POST['type'];
+$type = @$data['type'];
 if ($type == 1)
 {
     global $con;
