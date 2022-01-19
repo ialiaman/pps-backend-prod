@@ -13,8 +13,8 @@ $type = @$data['type'];
 if ($type == 1)
 {
     global $con;
-    $ip = $_POST['ip'];
-    $page= $_POST['page'];
+    $ip = $data['ip'];
+    $page= $data['page'];
     if ($ip != null)
     {
         $getCurrentCount = $con -> query("SELECT count FROM visit_count WHERE page_name = '$page' ");
@@ -39,6 +39,7 @@ if ($type == 1)
     {
         $data = array("No IP Address Recieved");
         echo json_encode($data);
+    
     } 
 }
 else
