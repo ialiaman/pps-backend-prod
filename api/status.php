@@ -1,15 +1,17 @@
 <?php
 
-include('config.php');
 header("Content-Type:application/json");
 header('Access-Control-Allow-Origin: *'); 
 header("Access-Control-Allow-Credentials: true");
 header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
 header('Access-Control-Max-Age: 1000');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+include('config.php');
+
 
 $data = json_decode(file_get_contents("php://input"), true);
 $type = @$data['type'];
+
 if ($type == 1)
 {
     global $con;
@@ -39,7 +41,6 @@ if ($type == 1)
     {
         $data = array("No IP Address Recieved");
         echo json_encode($data);
-    
     } 
 }
 else
@@ -82,10 +83,3 @@ else
 // }
 
 ?>
-
-
-
-
-
-
-
