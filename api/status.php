@@ -37,12 +37,14 @@ if ($type == 1)
     }
     else
     {
-        echo json_encode('No IP Address Recieved');
+        $data = array("No IP Address Recieved");
+        echo json_encode($data);
     } 
 }
 else
 {
-    echo json_encode('Type not Same');
+    $data = array("Type not Same");
+    echo json_encode($data);
 }
 
 // if ($type == 2)
