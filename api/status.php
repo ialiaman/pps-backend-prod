@@ -43,11 +43,6 @@ if ($type == 1)
         echo json_encode($data);
     } 
 }
-else
-{
-    $data = array("Type not Same");
-    echo json_encode($data);
-}
 
 // if ($type == 2)
 // {
