@@ -41,12 +41,14 @@
                             <li><a class="ms-link" href="customer-detail.php">Customers Details</a></li>
                         </ul>
                     </li>
+                    <a class="m-link" href="contact_us.php">
+                            <i class="icofont-phone-circle fs-5"></i> <span>Contact Us</span></a>
                     <!-- Accounts Commented -->
                     <!-- <li class="collapsed">
                         <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-Componentsone" href="#"><i
                                 class="icofont-ui-calculator"></i> <span>Accounts</span> <span
                                 class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
-                        <!-- Menu: Sub menu ul -->
+                         Menu: Sub menu ul -->
                     <!--    <ul class="sub-menu collapse" id="menu-Componentsone">
                             <li><a class="ms-link" href="invoices.php">Invoices </a></li>
                         </ul>

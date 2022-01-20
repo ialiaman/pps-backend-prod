@@ -200,27 +200,23 @@ include 'auth.php';
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php
+                                    include 'dbcon.php';
+
+                                    $displayquery = "SELECT * FROM visit_count ORDER BY id ASC";
+                                    $querydisplay = mysqli_query($con, $displayquery);
+
+                                    while ($pages = mysqli_fetch_assoc($querydisplay)) {
+                                ?>
                                     <tr>
-                                        <td><a href="#">/dist/product.html</a></td>
-                                        <td>245</td>
+                                        <td><?php echo $pages['page_name']; ?></td>
+                                        <td><?php echo $pages['count']; ?></td>
                                     </tr>
-                                    <tr>
-                                        <td><a href="#">/dist/product-cart.html</a></td>
-                                        <td>455</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">/dist/admin-profile.html</a></td>
-                                        <td>45</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">/dist/order-history.html</a></td>
-                                        <td>545</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">/dist/product-detail.html</a></td>
-                                        <td>55</td>
-                                    </tr>
+                                <?php
+                                }
+                                ?>
                                 </tbody>
+                                
                             </table>
                         </div>
                     </div>
