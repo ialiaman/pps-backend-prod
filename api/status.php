@@ -82,4 +82,11 @@ else
 //     echo json_encode('Type not Same');
 // }
 
+if($type == 3) {
+    $getAllProducts = $con -> query("SELECT * FROM products ORDER BY id DESC");
+    while($product = mysqli_fetch_array($getAllProducts)) {
+        echo "Found";
+    }
+}
+
 ?>
