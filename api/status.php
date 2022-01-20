@@ -79,14 +79,15 @@ if ($type == 1)
 // }
 
 if($type == 3) {
+    global $APP_URL;
     $response = array();
     $getAllProducts = $con -> query("SELECT * FROM products ORDER BY id DESC");
     while($product = mysqli_fetch_array($getAllProducts)) {
         $response[] = array(
             "product_id" => $product['id'],
             "product_name" => $product['name'],
-            "product_proce" => $product['price'],
-            "product_image" => $APP_URL + '/admin/uploads/' + $product['image']
+            "product_price" => $product['price'],
+            "product_image" => $product['image']
         );
     }
     echo json_encode($response);
