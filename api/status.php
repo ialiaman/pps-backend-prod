@@ -11,6 +11,7 @@ include('config.php');
 
 $data = json_decode(file_get_contents("php://input"), true);
 $type = @$data['type'];
+$APP_URL = 'https://jataq.com/john';
 
 if ($type == 1)
 {
@@ -84,7 +85,8 @@ if($type == 3) {
         $response[] = array(
             "product_id" => $product['id'],
             "product_name" => $product['name'],
-            "product_proce" => $product['price']
+            "product_proce" => $product['price'],
+            "product_image" => $APP_URL + '/admin/uploads/' + $product['image']
         );
     }
     echo json_encode($response);
