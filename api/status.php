@@ -101,6 +101,18 @@ if($type == 4) {
 
     $insertMessage = $con -> query("INSERT INTO contact(name, email, phone, message) VALUES('$name', '$email', '$phone', '$message')");
     if($insertMessage) {
+        $to = "ahadaman757@gmail.com";
+        $subject = "This is subject";
+        
+        $message = "<b>This is HTML message.</b>";
+        $message .= "<h1>This is headline.</h1>";
+        
+        $header = "From:ahadaman757@gmail.com \r\n";
+        $header .= "Cc:afgh@somedomain.com \r\n";
+        $header .= "MIME-Version: 1.0\r\n";
+        $header .= "Content-type: text/html\r\n";
+        
+        $retval = mail ($to,$subject,$message,$header);
         $response = array(
             "response" => 1
         );
