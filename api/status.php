@@ -101,14 +101,25 @@ if($type == 4) {
 
     $insertMessage = $con -> query("INSERT INTO contact(name, email, phone, message) VALUES('$name', '$email', '$phone', '$message')");
     if($insertMessage) {
-        $to      = 'ahadaman757@gmail.com';
-        $subject = 'the subject';
-        $message = 'hello';
-        $headers = 'From: webmaster@jataq.com'       . "\r\n" .
-                     'Reply-To: webmaster@jataq.com' . "\r\n" .
-                     'X-Mailer: PHP/' . phpversion();
+        $emailto = 'ahadaman757@gmail.com';
+        $toname = 'Ahad Aman';
+        $emailfrom = 'ahadaman757@gmail.com';
+        $fromname = 'Ahad Aman';
+        $subject = 'Email Subject';
+        $messagebody = 'Hello.';
+        $headers = 
+            'Return-Path: ' . $emailfrom . "\r\n" . 
+            'From: ' . $fromname . ' <' . $emailfrom . '>' . "\r\n" . 
+            'X-Priority: 3' . "\r\n" . 
+            'X-Mailer: PHP ' . phpversion() .  "\r\n" . 
+            'Reply-To: ' . $fromname . ' <' . $emailfrom . '>' . "\r\n" .
+            'MIME-Version: 1.0' . "\r\n" . 
+            'Content-Transfer-Encoding: 8bit' . "\r\n" . 
+            'Content-Type: text/plain; charset=UTF-8' . "\r\n";
+        $params = '-f ' . $emailfrom;
+        $test = mail($emailto, $subject, $messagebody, $headers, $params);
     
-        if(mail($to, $subject, $message, $headers)) {
+        if($test) {
             $response = array(
                 "response" => 1
             );
