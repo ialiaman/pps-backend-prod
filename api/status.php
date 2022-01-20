@@ -102,7 +102,7 @@ if($type == 4) {
     $insertMessage = $con -> query("INSERT INTO contact(name, email, phone, message) VALUES('$name', '$email', '$phone', '$message')");
     if($insertMessage) {
         $response = array(
-            "response" => 1
+            "response" => 0
         );
         echo json_encode($response);
     }
