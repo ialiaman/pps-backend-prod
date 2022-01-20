@@ -87,7 +87,8 @@ if($type == 3) {
             "product_id" => $product['id'],
             "product_name" => $product['name'],
             "product_price" => $product['price'],
-            "product_image" => $product['image']
+            "product_image" => $product['image'],
+            "purchased" => false
         );
     }
     echo json_encode($response);
