@@ -93,5 +93,25 @@ if($type == 3) {
     }
     echo json_encode($response);
 }
+if($type == 4) {
+    $name = htmlspecialchars(mysqli_real_escape_string($con, $data['name']));
+    $email = htmlspecialchars(mysqli_real_escape_string($con, $data['email']));
+    $phone = htmlspecialchars(mysqli_real_escape_string($con, $data['phone']));
+    $message = htmlspecialchars(mysqli_real_escape_string($con, $data['message']));
+
+    $insertMessage = $con -> query("INSERT INTO contact(name, email, phone, message) VALUES('$name', '$email', '$phone', '$message')");
+    if($insertMessage) {
+        $response = array(
+            "response" => 1
+        );
+        echo json_encode($response);
+    }
+    else {
+        $response = array(
+            "response" => 0
+        );
+        echo json_encode($response);
+    }
+}
 
 ?>
