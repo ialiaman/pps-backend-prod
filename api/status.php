@@ -99,7 +99,7 @@ if($type == 4) {
     $phone = htmlspecialchars(mysqli_real_escape_string($con, $data['phone']));
     $message = htmlspecialchars(mysqli_real_escape_string($con, $data['message']));
 
-    $insertMessage = $con -> query("INSERT INTO contac(name, email, phone, message) VALUES('$name', '$email', '$phone', '$message')");
+    $insertMessage = $con -> query("INSERT INTO contact(name, email, phone, message) VALUES('$name', '$email', '$phone', '$message')");
     if($insertMessage) {
         $response = array(
             "response" => 1
