@@ -101,30 +101,10 @@ if($type == 4) {
 
     $insertMessage = $con -> query("INSERT INTO contact(name, email, phone, message) VALUES('$name', '$email', '$phone', '$message')");
     if($insertMessage) {
-        $emailto = 'ahadaman757@gmail.com';
-        $toname = 'Ahad Aman';
-        $emailfrom = 'ahadaman757@gmail.com';
-        $fromname = 'Ahad Aman';
-        $subject = 'Email Subject';
-        $messagebody = 'Hello.';
-        $headers = 
-            'Return-Path: ' . $emailfrom . "\r\n" . 
-            'From: ' . $fromname . ' <' . $emailfrom . '>' . "\r\n" . 
-            'X-Priority: 3' . "\r\n" . 
-            'X-Mailer: PHP ' . phpversion() .  "\r\n" . 
-            'Reply-To: ' . $fromname . ' <' . $emailfrom . '>' . "\r\n" .
-            'MIME-Version: 1.0' . "\r\n" . 
-            'Content-Transfer-Encoding: 8bit' . "\r\n" . 
-            'Content-Type: text/plain; charset=UTF-8' . "\r\n";
-        $params = '-f ' . $emailfrom;
-        $test = mail($emailto, $subject, $messagebody, $headers, $params);
-    
-        if($test) {
-            $response = array(
-                "response" => 1
-            );
-            echo json_encode($response);
-        }
+        $response = array(
+            "response" => 1
+        );
+        echo json_encode($response);
     }
     else {
         $response = array(
