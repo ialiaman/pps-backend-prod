@@ -108,11 +108,12 @@ if($type == 4) {
                      'Reply-To: webmaster@jataq.com' . "\r\n" .
                      'X-Mailer: PHP/' . phpversion();
     
-        mail($to, $subject, $message, $headers);
-        $response = array(
-            "response" => 1
-        );
-        echo json_encode($response);
+        if(mail($to, $subject, $message, $headers)) {
+            $response = array(
+                "response" => 1
+            );
+            echo json_encode($response);
+        }
     }
     else {
         $response = array(
