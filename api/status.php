@@ -78,10 +78,16 @@ if ($type == 1)
 // }
 
 if($type == 3) {
+    $response = array();
     $getAllProducts = $con -> query("SELECT * FROM products ORDER BY id DESC");
     while($product = mysqli_fetch_array($getAllProducts)) {
-        echo "Found";
+        $response[] = array(
+            "product_id" => $product['id'],
+            "product_name" => $product['name'],
+            "product_proce" => $product['price']
+        );
     }
+    echo json_encode($response);
 }
 
 ?>
