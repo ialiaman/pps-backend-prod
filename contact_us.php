@@ -18,72 +18,60 @@ include 'auth.php';
             </div>
         </div>
         <!-- Row end  -->
-        <div class="accordion" id="accordionExample">
+        <?php
+            include 'dbcon.php';
+
+            $limit = 10;
+
+            if (isset($_GET['page'])) {
+                $page = $_GET['page'];
+            } else {
+                $page = 1;
+            }
+            $offset = ($page - 1) * $limit;
+
+            $displayquery = "SELECT * FROM contact ORDER BY id DESC LIMIT {$offset},{$limit}";
+            $querydisplay = mysqli_query($con, $displayquery);
+
+            while ($contact = mysqli_fetch_assoc($querydisplay)) {
+        ?>
+        <div class="accordion" id="accordion1">
             <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Khan
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $contact['name']; ?>" aria-expanded="false" aria-controls="<?php echo $contact['name']; ?>">
+                    <?php echo $contact['name']; ?>
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="row py-2">
-                            <div class="col-6">
-                                <span class="text-uppercase fw-bold">Khan</span>
-                            </div>
-                            <div class="col-6">
-                                <span class="fw-bold">abc@gmail.com</span>
-                            </div>
-                        </div>
-                        <div class="row py-2">
-                            <div class="col-6">
-                                <span class="fw-bold">+(112) 222 444</span>  
-                            </div>
-                            <div class="col-6">
-                                <span class="fw-bold"> 20/01/2022</span>  
-                            </div>
-                        </div>
-                        <div class="row py-2">
-                            <div class="col-12">
-                                <span > <strong>Product not Deliverd </strong> </span>  
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Shery
-                    </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div id="<?php echo $contact['name']; ?>" class="accordion-collapse collapse">
                 <div class="accordion-body">
                         <div class="row py-2">
                             <div class="col-6">
-                                <span class="text-uppercase fw-bold">Shery</span>
+                                <span class="text-uppercase fw-bold"><?php echo $contact['name']; ?></span>
                             </div>
                             <div class="col-6">
-                                <span class="fw-bold">abcd@gmail.com</span>
+                                <span class="fw-bold"><?php echo $contact['email']; ?></span>
                             </div>
                         </div>
                         <div class="row py-2">
                             <div class="col-6">
-                                <span class="fw-bold">+(112) 333 444</span>  
+                                <span class="fw-bold"><?php echo $contact['phone']; ?></span>  
                             </div>
                             <div class="col-6">
-                                <span class="fw-bold"> 19/01/2022</span>  
+                                <span class="fw-bold"> <?php echo $contact['time']; ?></span>  
                             </div>
                         </div>
                         <div class="row py-2">
                             <div class="col-12">
-                                <span > <strong>Product Deliverd </strong> </span>  
+                                <span > <strong><?php echo $contact['message']; ?></strong> </span>  
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <?php
+        }
+        ?>
         <!-- Row end  -->
 
     </div>
