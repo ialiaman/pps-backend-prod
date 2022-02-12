@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2022 at 03:17 PM
+-- Generation Time: Feb 12, 2022 at 02:45 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 7.3.11
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `name` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `name`, `email`, `phone`, `message`, `time`) VALUES
+(1, 'Khan', 'Khan@gmail.com', '0331 123456789', 'MY product has not been delivered yet.', '2022-02-11 15:40:02'),
+(2, 'Shery', 'Shery@gmail.com', '0322 334455667', 'Product Received', '2022-02-11 15:45:38');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customers`
 --
 
@@ -32,20 +55,20 @@ CREATE TABLE `customers` (
   `cust_id` varchar(255) NOT NULL,
   `cust_name` varchar(255) NOT NULL,
   `phn_num` varchar(255) NOT NULL,
-  `reg_date` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL
+  `country` varchar(255) NOT NULL,
+  `reg_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `cust_id`, `cust_name`, `phn_num`, `reg_date`, `mail`, `country`) VALUES
-(1, '#CS-00002	', 'Joan Dyer', '202-555-0983', '12/03/2021', 'JoanDyer@gmail.com', 'South Africa'),
-(2, '#CS-00003	', 'Joan', '202-555-0984', '12/03/2021', 'Joan@gmail.com', 'South Africa'),
-(3, '#CS-00004	', 'Dyer', '202-555-0984', '12/03/2021', 'Dyer@gmail.com', 'Africa'),
-(4, '#CS-00005	', 'Dyer', '202-555-0984', '12/03/2021', 'Dyer@gmail.com', 'America');
+INSERT INTO `customers` (`id`, `cust_id`, `cust_name`, `phn_num`, `mail`, `country`, `reg_date`) VALUES
+(1, '#CS-00002	', 'Joan Dyer', '202-555-0983', 'JoanDyer@gmail.com', 'South Africa', '2022-02-11 15:43:04'),
+(2, '#CS-00003	', 'Joan', '202-555-0984', 'Joan@gmail.com', 'South Africa', '2022-02-11 15:43:04'),
+(3, '#CS-00004	', 'Dyer', '202-555-0984', 'Dyer@gmail.com', 'Africa', '2022-02-11 15:43:04'),
+(4, '#CS-00005	', 'Dyer', '202-555-0984', 'Dyer@gmail.com', 'America', '2022-02-11 15:43:04');
 
 -- --------------------------------------------------------
 
@@ -67,27 +90,27 @@ CREATE TABLE `orders` (
   `pincode` varchar(255) NOT NULL,
   `phn_num` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `date` varchar(255) NOT NULL,
   `seller_gst` varchar(255) NOT NULL,
-  `purchase_gst` varchar(255) NOT NULL
+  `purchase_gst` varchar(255) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `number`, `order_id`, `cust_name`, `item`, `pay_info`, `price`, `status`, `block_num`, `address`, `pincode`, `phn_num`, `email`, `date`, `seller_gst`, `purchase_gst`) VALUES
-(1, '#78414', '#ORDER-00002	', 'Joan Dyer', 'Note Diaries', 'Bank EMI', '620', '1', 'A-510\r\n', '81 Fulton London\r\n', '385467\r\n', '202-458-4568', 'JoanDyer@gmail.com', '12/01/2022', 'AFQWEPX17390VJ', 'NVFQWEPX1730VJ'),
-(2, '#78515', '#ORDER-00003	', 'Dyer', 'Diaries', 'Bank EMI', '600', '1', ' A-511', '82 Fulton London', '4568', '202-458-4568', 'Dyer@gmail.com', '12/01/2022', 'AFQWEPX17450BJ', 'DGFSEPX17450BJ'),
-(3, '#78416', '#ORDER-00003	', 'Joan', 'Watch', 'Debit Card', '500', '0', 'A-515', '81 Fulton London', ' 2024', ' 202-458-4568', 'Joan@gmail.com', '12/01/2022', 'NVFQWEPX2735KL', 'NVFQWEPX567RG'),
-(4, '#78514', '#ORDER-00004	', 'Alexander', 'Oculus VR', 'Credit Card', '250', '0', 'A-516', '81 Downtown', '5165', '458-202-4568', 'Alexander@gmail.com', '12/01/2022', 'YTRIOPPX1730VJ', 'SRTWVYPX1730VJ'),
-(5, '#78513', '#ORDER-00015	', 'Julia', 'Flower Port', 'Bank EMI', '400', '1', 'A-518', '81 Fulton London', '385467', '315-467-3874', 'Julia@yahoo.com', '12/01/2022', 'NVFQWEPY1340TZ', 'NVFIOPPX1730XZ'),
-(6, '#78412', '#ORDER-00016	', 'Anas', 'Wall Clock', 'Debit Card', '300', '0', 'A-516', '81 Fulton London', '46785', ' 212-428-456', 'Anas@outlook.com', '12/01/2022', 'NVFQWEPX1897YO', 'NVFQWEPX1745TS'),
-(7, '#78413', '#ORDER-00017	', 'Anas Khan', 'Watch', 'Debit Card', '400', '1', 'A-510', ' 81 London', ' 385467', ' 202-458-4568', 'AnasKhan@gmail.com', '13/02/2022', 'NVFQWEPX1730XZ', 'NVFQWEPX1730BN'),
-(8, '#78417', '#ORDER-00024	', 'Wasay', 'Oculus VR', 'Credit Card', '430', '1', 'A-610', '81 Fulton London\r\n', '315217', '430-420-5431', 'Wasay@gmail.com', '13/01/2022', 'NVFQWEPX1730VJ', 'NVFQWEPX1730VJ'),
-(9, '#78510', '#ORDER-00025	', 'Sheheryar', 'Watch', 'Credit Card', '500', '0', ' A-500', ' p1 London', ' 385467', ' 385-467-567', 'Sheheryar@gmail.com', '13/01/2022', 'NVFQWEPX1730VJ', 'NVFQWEPX1730VJ'),
-(10, '#78410', '#ORDER-00027	', 'Sheheryar', 'Watch', 'Credit Card', '500', '0', 'A-410', ' 81 London', ' 385467', '854-677-9876', 'shery@gmail.com', '13/01/2022', 'NVFQWEPX1730VJ', 'NVFQWEPX1730VJ'),
-(11, '#78409', '#ORDER-00029	', 'Shery', 'Watch', 'Credit Card', '500', '1', ' A-490', ' 81 Fulton London', ' 385467', '385-467-422', 'shery@gmail.com', '14/01/2022', 'NVFQWEPX1730VJ', 'NVFQWEPX1730BJ');
+INSERT INTO `orders` (`id`, `number`, `order_id`, `cust_name`, `item`, `pay_info`, `price`, `status`, `block_num`, `address`, `pincode`, `phn_num`, `email`, `seller_gst`, `purchase_gst`, `date`) VALUES
+(1, '#78414', '#ORDER-00002	', 'Joan Dyer', 'Note Diaries', 'Bank EMI', '620', '1', 'A-510\r\n', '81 Fulton London\r\n', '385467\r\n', '202-458-4568', 'JoanDyer@gmail.com', 'AFQWEPX17390VJ', 'NVFQWEPX1730VJ', '2022-02-11 15:40:54'),
+(2, '#78515', '#ORDER-00003	', 'Dyer', 'Diaries', 'Bank EMI', '600', '1', ' A-511', '82 Fulton London', '4568', '202-458-4568', 'Dyer@gmail.com', 'AFQWEPX17450BJ', 'DGFSEPX17450BJ', '2022-02-11 15:40:54'),
+(3, '#78416', '#ORDER-00003	', 'Joan', 'Watch', 'Debit Card', '500', '0', 'A-515', '81 Fulton London', ' 2024', ' 202-458-4568', 'Joan@gmail.com', 'NVFQWEPX2735KL', 'NVFQWEPX567RG', '2022-02-11 15:40:54'),
+(4, '#78514', '#ORDER-00004	', 'Alexander', 'Oculus VR', 'Credit Card', '250', '0', 'A-516', '81 Downtown', '5165', '458-202-4568', 'Alexander@gmail.com', 'YTRIOPPX1730VJ', 'SRTWVYPX1730VJ', '2022-02-11 15:40:54'),
+(5, '#78513', '#ORDER-00015	', 'Julia', 'Flower Port', 'Bank EMI', '400', '1', 'A-518', '81 Fulton London', '385467', '315-467-3874', 'Julia@yahoo.com', 'NVFQWEPY1340TZ', 'NVFIOPPX1730XZ', '2022-02-11 15:40:54'),
+(6, '#78412', '#ORDER-00016	', 'Anas', 'Wall Clock', 'Debit Card', '300', '0', 'A-516', '81 Fulton London', '46785', ' 212-428-456', 'Anas@outlook.com', 'NVFQWEPX1897YO', 'NVFQWEPX1745TS', '2022-02-11 15:40:54'),
+(7, '#78413', '#ORDER-00017	', 'Anas Khan', 'Watch', 'Debit Card', '400', '1', 'A-510', ' 81 London', ' 385467', ' 202-458-4568', 'AnasKhan@gmail.com', 'NVFQWEPX1730XZ', 'NVFQWEPX1730BN', '2022-02-11 15:40:54'),
+(8, '#78417', '#ORDER-00024	', 'Wasay', 'Oculus VR', 'Credit Card', '430', '1', 'A-610', '81 Fulton London\r\n', '315217', '430-420-5431', 'Wasay@gmail.com', 'NVFQWEPX1730VJ', 'NVFQWEPX1730VJ', '2022-02-11 15:40:54'),
+(9, '#78510', '#ORDER-00025	', 'Sheheryar', 'Watch', 'Credit Card', '500', '0', ' A-500', ' p1 London', ' 385467', ' 385-467-567', 'Sheheryar@gmail.com', 'NVFQWEPX1730VJ', 'NVFQWEPX1730VJ', '2022-02-11 15:40:54'),
+(10, '#78410', '#ORDER-00027	', 'Sheheryar', 'Watch', 'Credit Card', '500', '0', 'A-410', ' 81 London', ' 385467', '854-677-9876', 'shery@gmail.com', 'NVFQWEPX1730VJ', 'NVFQWEPX1730VJ', '2022-02-11 15:40:54'),
+(11, '#78409', '#ORDER-00029	', 'Shery', 'Watch', 'Credit Card', '500', '1', ' A-490', ' 81 Fulton London', ' 385467', '385-467-422', 'shery@gmail.com', 'NVFQWEPX1730VJ', 'NVFQWEPX1730BJ', '2022-02-11 15:40:54');
 
 -- --------------------------------------------------------
 
@@ -126,10 +149,10 @@ INSERT INTO `products` (`id`, `name`, `price`, `description`, `image`) VALUES
 (16, 'VR', '200', 'good', 'productslide-5.jpg'),
 (17, 'VR Black', '200', 'good', 'productslide-5.jpg'),
 (18, 'Flower Port', '100', 'Great Look', 'image (11).jpg'),
-(19, 'Watch', '120', 'Good Condition And Great Look', 'image (1).jpg'),
 (20, 'Oculus VR', '150', 'Good Condition and Best Quality', 'productslide-3.jpg'),
 (21, 'Wall Clock', '120', 'Best For Office use...In Good Condition', 'image (9).jpg'),
-(22, 'Oculus VR Black', '120', 'Good Quality', 'product-items-3.jpg');
+(22, 'Oculus VR Black', '120', 'Good Quality', 'product-items-3.jpg'),
+(23, 'Oculus VR Black\'', '10', 'good one', 'productslide-3.jpg');
 
 -- --------------------------------------------------------
 
@@ -232,7 +255,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`

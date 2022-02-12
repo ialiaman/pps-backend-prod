@@ -1,3 +1,8 @@
+<?php 
+ 
+ include 'auth.php';
+
+?>
  <!-- sidebar -->
     <div class="sidebar px-4 py-4 py-md-4 me-0">
         <div class="d-flex flex-column h-100">
